@@ -1,0 +1,67 @@
+.no-portfolio {
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.no-portfolio .image {
+    width: 240px;
+}
+
+.add-transactions {
+    cursor: pointer;
+    display: flex;
+    border: 1px solid #eff2f5;
+    border-radius: 12px;
+    padding: 15px;
+    width: 30%
+}
+
+.add-transactions .pointer {
+    padding-right: 15px;
+}
+
+.add-transactions h3 {
+    font-weight: 600;
+    font-size: 16px;
+    color: black;
+    padding-bottom: 10px;
+}
+
+.add-transactions p {
+    font-weight: 400;
+    font-size: 14px;
+    color: grey;
+}
+
+.heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    
+}
+
+.heading h1{
+    font-size: 35px;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+
+.heading p{
+    font-size: 18px;
+    font-weight: 500;
+    color: grey;
+    padding-bottom: 10px;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .add-transactions {
+        width: 100%
+    }
+
+}

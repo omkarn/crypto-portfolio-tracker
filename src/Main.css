@@ -1,0 +1,11 @@
+.main{
+    display: flex;
+    margin: 40px;
+}
+
+.middle{
+    width: 100%;
+    margin-left:15px;
+    margin-right:15px;
+    margin-top: 0;
+}

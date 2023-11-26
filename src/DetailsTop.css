@@ -1,0 +1,36 @@
+.details-top{
+    width: 100%;
+    margin:20px 20px 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.details-top-right{
+    display: flex;
+}
+
+.details-top-button{
+    border-radius: 8px;
+    padding: 8px 13px 8px 13px;
+    margin: 5px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.add{
+    background-color: rgb(56, 97, 251);
+    color: white;
+}
+
+
+.edit{
+    color:black;
+    background-color: rgb(239, 242, 245);
+}
+
+
+.details-top-h1{
+    font-size: xx-large;
+}

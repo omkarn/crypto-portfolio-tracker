@@ -1,0 +1,112 @@
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  font-weight: bold;
+  border-bottom: 0.05px solid lightgray;
+  font-size:15px;
+}
+
+.top{
+  padding-left: 25px;
+  padding-right: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 45px;
+  border-bottom: 0.05px solid lightgray;
+  font-size:12px;
+}
+
+.top p{
+  padding-left: 5px;
+}
+
+.cypto-prices{
+  width:95%;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  /* animation: 10s slide infinite linear; */
+}
+
+.top-cryto-price-details{
+  display: flex;
+  align-items: center;
+}
+
+.top-crypto-image{
+  width:15px
+}
+
+.user-logo{
+  height: 35px;
+  justify-self: flex-end;
+}
+
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-left>img {
+  padding-top: 4px;
+  height: 150px;
+}
+
+
+.header-right {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+
+.header-search {
+  display: flex;
+  margin-left: 20px;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: rgb(239, 242, 245);
+}
+
+.header-search>input {
+  width: 220px;
+  outline: none;
+  background: none;
+  border: none;
+}
+
+.header-p{
+  cursor: pointer;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+  .header-search {
+    display: none;
+  }
+  .header-p {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .header-search-small {
+    display: none;
+  }
+
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-100%);
+  }
+}

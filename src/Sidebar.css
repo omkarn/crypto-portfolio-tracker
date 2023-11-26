@@ -1,0 +1,55 @@
+.portfolio-header, .portfolio{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.portfolio-header{
+    font-weight: bold;
+    font-size: small;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.portfolios{
+    background-color: rgb(239, 242, 245);
+    border-radius: 8px;
+    padding: 10px;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.portfolio-name{
+    font-weight: bold;
+    font-size: medium;
+}
+
+.portfolio-value{
+    color:grey;
+    font-size: small;
+}
+
+.sidebar{
+    width:300px
+}
+
+button{
+   background: none;
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+   color: #3861FB;
+   font-weight: bold;
+}
+
+button > span{
+    font-weight: bolder;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+    .sidebar{
+        display: none;
+    }
+  }

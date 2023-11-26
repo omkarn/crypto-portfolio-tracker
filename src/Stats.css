@@ -1,0 +1,21 @@
+.stats{
+    display: flex;
+    width: 100%;
+    margin-top: 0;
+}
+
+.stats > div{
+    padding:25px
+}
+
+.title{
+    font-size: 14px;
+    font-weight: 500;
+    color:#58667e
+}
+
+.change{
+    color:#16c784;
+    font-size: 15px;
+    font-weight: 600;
+}
