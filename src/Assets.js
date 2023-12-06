@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Assets.css";
 
-function Assets() {
+function Assets(props) {
   return (
     <div className="assets">
       <h2>Assets</h2>
@@ -17,27 +17,29 @@ function Assets() {
             <th>Holdings</th>
             <th>Avg. Buy Price</th>
             <th>Profit/Loss</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Bitcoin</td>
-            <td>$28,304.78</td>
-            <td>0.05%</td>
-            <td>1.03%</td>
-            <td>5.40%</td>
-            <td>
-              <p>$28,304.78</p>
-              <p>1 BTC</p>
-            </td>
-            <td>$20,000.00</td>
-            <td>
-              <p>+8300.73</p>
-              <p>41.53%</p>
-            </td>
-            <td>+ -</td>
-          </tr>
+          {props.viewingPortfolio.transactions.map((transcation) => {
+            return (
+              <tr>
+                <td>{transcation.cryptoName}</td>
+                <td>${transcation.cryptoCurrentPrice}</td>
+                <td>{(transcation.percentageChange24H/24).toFixed(2)}%</td>
+                <td>{(transcation.percentageChange24H).toFixed(2)}%</td>
+                <td>{(transcation.percentageChange24H*7).toFixed(2)}%</td>
+                <td>
+                  <p>$28,304.78</p>
+                  <p>{transcation.quantity} {transcation.cryptoSymbol.toUpperCase()}</p>
+                </td>
+                <td>${transcation.buyPrice}</td>
+                <td>
+                  <p>{((transcation.cryptoCurrentPrice-transcation.buyPrice)*transcation.quantity) > 0 ? `+` : ``}{((transcation.cryptoCurrentPrice-transcation.buyPrice)*transcation.quantity).toFixed(2)}</p>
+                  <p>{(((transcation.cryptoCurrentPrice-transcation.buyPrice)*transcation.quantity)/(transcation.buyPrice*transcation.quantity)*100).toFixed(2)}%</p>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

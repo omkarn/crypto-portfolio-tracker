@@ -1,0 +1,193 @@
+.transaction-model-background {
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(10, 30, 66, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.transaction-model-container {
+    padding: 30px 20px 20px 20px;
+    width: 450px;
+    height: 85vh;
+    border-radius: 15px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.transaction-model-container .heading {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.transaction-model-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.transaction-model-container .buy-sell-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: rgb(239, 242, 245);
+    padding: 3px;
+    border-radius: 6px;
+}
+
+.buy-sell-div button {
+    margin: 1px;
+    width: 49%;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 6px;
+    padding: 8px;
+    cursor: pointer;
+    background-color: white;
+    cursor: pointer;
+
+}
+
+.buy-sell-div button:hover {
+    background-color: rgb(248, 250, 253) !important;
+}
+
+.transaction-model-container .selected-crypto {
+    margin-top: 20px;
+    width: 100%;
+    border: 1px solid rgb(207, 214, 228);
+    border-radius: 8px;
+}
+
+.transaction-model-container .selected-crypto .name {
+    display: flex;
+    
+    align-items: center;
+    padding: 10px 5px;
+    margin-top: 4px;
+
+}
+
+.transaction-model-container .selected-crypto:hover {
+    background-color: #EFF2F5;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.transaction-model-container .selected-crypto p {
+    padding-left: 11px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.transaction-model-container .selected-crypto img {
+    width: 22px;
+    height: 22px;
+}
+
+.transaction-model-container .selected-crypto span {
+    color: rgb(128, 138, 157);
+    padding-left: 10px;
+    font-weight: 700;
+}
+
+.transaction-model-container .selected-crypto{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2px;
+    padding-left:6px;
+    padding-right:8px;
+}
+
+
+.transaction-model-container .transaction-details{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.transaction-model-container .transaction-details p{
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.transaction-model-container .transaction-details input{
+    border: 1px solid rgb(207, 214, 228);
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 12px 16px;
+}
+
+.transaction-model-container .date{
+    background: rgb(239, 242, 245);
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.transaction-model-container .summary{
+    background: rgb(239, 242, 245);
+    margin-top: 20px;
+    padding: 17px;
+    border-radius: 6px;
+}
+
+.transaction-model-container .summary p{
+color: rgb(88, 102, 126);
+font-size: 14px;
+font-weight: 600;
+}
+
+.transaction-model-container .summary h1{
+    margin-top: 5px;
+    font-size: 24;
+    font-weight: bold;
+}
+
+.transaction-model-container .date input{
+    background: rgb(239, 242, 245);
+    width: 100%;
+    color: rgb(88, 102, 126);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.transaction-model-container .add-transaction-button {
+    margin-top: 20px;
+    font-weight: 500;
+    padding: 13px;
+    align-items: center;
+    background: rgb(56, 97, 251);
+    color: white;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-transaction-button-div> .add-transaction-button {
+    background: rgb(56, 97, 251);
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 450px) {
+    .transaction-model-container {
+        width: 100vw;
+        border-radius: 0px;
+    }
+}

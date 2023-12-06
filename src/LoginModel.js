@@ -7,6 +7,9 @@ import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { login } from "./features/userSlice";
 
+import { collection, setDoc, doc, getDoc } from "firebase/firestore";
+import { db } from "./firebase";
+
 function LoginModel(props) {
   const [formState, setFormState] = useState({
     email: "",
@@ -49,8 +52,18 @@ function LoginModel(props) {
                   email: userAuth.user.email,
                   displayName: formState.name,
                   uid: userAuth.user.uid,
+                  portfolios: [],
                 })
               );
+            })
+            .then(() => {
+              const docData = {
+                id: userAuth.user.uid,
+                email: userAuth.user.email,
+                displayName: formState.name,
+                portfolios: [],
+              };
+              db.collection("users").doc(userAuth.user.uid).set(docData);
             });
         })
         .catch((error) => alert(error.message));
@@ -61,15 +74,24 @@ function LoginModel(props) {
     e.preventDefault();
     auth
       .signInWithEmailAndPassword(formState.email, formState.password)
-      .then((userAuth) => {
+      .then(async (userAuth) => {
+        
+        const docRef = doc(db, "users", userAuth.user.uid);
+        const docSnap = await getDoc(docRef);
+        const userData = docSnap.data();
         dispatch(
           login({
-            email: userAuth.user.email,
-            displayName: userAuth.user.name,
-            uid: userAuth.user.uid,
+            // email: userAuth.user.email,
+            // displayName: userAuth.user.name,
+            // uid: userAuth.user.uid,
+            email: userData.email,
+            displayName: userData.name,
+            uid: userData.uid,
+            portfolios: userData.portfolios
           })
         );
-      }).catch((error)=>alert(error.message));
+      })
+      .catch((error) => alert(error.message));
   };
 
   const handleChange = (e) => {

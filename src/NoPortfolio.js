@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "./NoPortfolio.css";
 import AddTransactionModel from "./AddTransactionModel";
 
-function NoPortfolio() {
+function NoPortfolio(props) {
   const [addTransactionPopUp, setaddTransactionPopUp] = useState(false);
   const handleClick = () => {
     setaddTransactionPopUp(true);
@@ -39,6 +39,7 @@ function NoPortfolio() {
         <AddTransactionModel
           visible={addTransactionPopUp}
           closeModel={setaddTransactionPopUp}
+          selectedPortfolio={props.selectedPortfolio}
         />
       </div>
     </>
@@ -46,3 +47,5 @@ function NoPortfolio() {
 }
 
 export default NoPortfolio;
+
+export const { handleClick } = NoPortfolio;

@@ -5,6 +5,13 @@ import "./AddTransactionModel.css";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+import { login, selectUser } from "./features/userSlice";
+import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
+import { db } from "./firebase";
+
+import AddTransactionModel from "./AddTransactionModel";
+
 function AddTransaction(props) {
   const close = () => {
     props.closeModel(false);
@@ -15,6 +22,43 @@ function AddTransaction(props) {
   const handleChange = (e) => {
     const { value } = e.target;
     setInput(value);
+  };
+
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  //console.log(user);
+
+  const createPortfolio = async (e) => {
+    e.preventDefault();
+
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+    const userData = docSnap.data();
+    const oldPortfolios = userData.portfolios;
+    oldPortfolios.push({
+      portfolioName: input,
+      transactions: [],
+    });
+    // console.log(oldPortfolios)
+
+    await updateDoc(docRef, {
+      portfolios: arrayUnion({
+        portfolioName: input,
+        transactions: [],
+      }),
+    });
+
+    const updatedData= (await getDoc(docRef));
+
+    console.log(updatedData);
+    dispatch(
+      login({
+        ...user,
+        portfolios : updatedData.data().portfolios,
+      })
+    );
+
+    console.log(user);
   };
 
   return (
@@ -56,7 +100,7 @@ function AddTransaction(props) {
             />
           </div>
           <div className="button-div">
-            <button>Create Portfolio</button>
+            <button onClick={createPortfolio}>Create Portfolio</button>
           </div>
         </div>
       </div>

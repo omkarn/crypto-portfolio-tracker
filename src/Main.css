@@ -1,11 +1,45 @@
 .main{
     display: flex;
-    margin: 40px;
+    margin: 30px;
 }
 
-.middle{
+.middle, .middle-no-transaction{
     width: 100%;
     margin-left:15px;
     margin-right:15px;
     margin-top: 0;
+}
+
+.button-div>button {
+    background: rgb(56, 97, 251);
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.middle-no-transaction{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.middle-no-transaction img{
+    width: 250px;
+    height: 250px;
+}
+
+.middle-no-transaction h1 {
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.middle-no-transaction p {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    color:rgb(88, 102, 126)
 }

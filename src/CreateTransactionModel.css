@@ -1,0 +1,106 @@
+.create-transaction-model-background {
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(10, 30, 66, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-transaction-model-container {
+    padding: 30px 30px 30px 30px;
+    width: 450px;
+    height: 85vh;
+    border-radius: 15px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-transaction-model-container .heading {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.create-transaction-model-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.create-transaction-model-container input {
+    background-color: #EFF2F5;
+    border: 1px solid rgb(207, 214, 228);
+    border-radius: 8px;
+    padding: 10px;
+    outline: none;
+}
+
+
+.create-transaction-model-container input:active,
+.create-transaction-model-container input:focus {
+    background-color: transparent;
+}
+
+.create-transaction-model-container li {
+    list-style: none;
+    display: flex;
+    width: 100;
+    align-items: center;
+    padding: 10px 5px;
+    margin-top: 4px;
+}
+
+.create-transaction-model-container .list-item:hover {
+    background-color: #EFF2F5;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.create-transaction-model-container .list-item p {
+    padding-left: 11px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.create-transaction-model-container .list-item img {
+    width: 22px;
+    height: 22px;
+}
+
+.create-transaction-model-container .list-item span {
+    color: rgb(128, 138, 157);
+    padding-left: 10px;
+    font-weight: 700;
+}
+
+.create-transaction-model-container .crypto-list {
+    margin-top: 5px;
+    padding: 0;
+    overflow: scroll;
+}
+
+.list-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left:6px;
+    padding-right:8px;
+}
+
+
+.crypto-list::-webkit-scrollbar {
+    display: none;
+}
+
+@media only screen and (max-width: 450px) {
+    .create-transaction-model-container {
+        width: 100vw;
+        border-radius: 0px;
+    }
+}

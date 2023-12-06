@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./DetailsTop.css";
 
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 
-function DetailsTop() {
+import CreateTransactionModel from "./CreateTransactionModel";
+
+function DetailsTop(props) {
+  const [createTransactionPopUp, setCreateTransactionPopUp] = useState(false);
+
+  const handleClick = (e) => {
+    setCreateTransactionPopUp(true);
+  };
+
+ 
+
   return (
     <div className="details-top">
       <div className="details-top-left">
@@ -16,15 +26,28 @@ function DetailsTop() {
             fontSize: "14px",
           }}
         >
-          Current Balance
+          {props.viewingPortfolio.portfolioName}
         </p>
-        <h1 className="details-top-h1">$28,259.86</h1>
+        <h1 className="details-top-h1">
+          $
+          {(props.viewingPortfolio.transactions.reduce((a, b) => {
+            return a + b.cryptoCurrentPrice * b.quantity;
+          }, 0)).toFixed(2)}
+        </h1>
         <p>
           <span
             className="span-one"
             style={{ color: "rgb(22, 199, 132)", fontWeight: "600" }}
           >
-            + $28,259.86
+            +{" "}
+            {(
+              props.viewingPortfolio.transactions.reduce((a, b) => {
+                return a + b.cryptoCurrentPrice * b.quantity;
+              }, 0) -
+              props.viewingPortfolio.transactions.reduce((a, b) => {
+                return a + b.priceChange24H * b.quantity;
+              }, 0)
+            ).toFixed(2)}
           </span>{" "}
           <span
             className="span-two"
@@ -42,16 +65,16 @@ function DetailsTop() {
         </p>
       </div>
       <div className="details-top-right">
-        <button className="details-top-button edit">
-          <ModeEditOutlineOutlinedIcon
-            style={{ color: "grey", fontSize: "large", paddingRight: "5px" }}
-          />{" "}
-          <span> Edit</span>
-        </button>
-        <button className="details-top-button add">
-          <AddOutlinedIcon style={{ fontSize: "large", paddingRight: "5px" }} />{" "}
-          <span>Add Transaction</span>
-        </button>
+        <div className="button-div">
+          <button onClick={handleClick}>+ Add Transaction</button>
+        </div>
+        <div className="create-transaction-model">
+          <CreateTransactionModel
+            visible={createTransactionPopUp}
+            closeModel={setCreateTransactionPopUp}
+            selectedPortfolio={props.selectedPortfolio}
+          />
+        </div>
       </div>
     </div>
   );
