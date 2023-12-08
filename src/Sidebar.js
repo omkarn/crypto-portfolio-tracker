@@ -55,7 +55,7 @@ function Sidebar(props) {
     <>
       <div className="sidebar">
         <div className="portfolio-header">
-          <span>My Portfolio</span>
+          <span>My Portfolios</span>
           <ModeEditOutlineOutlinedIcon
             onClick={() => setEdit(!edit)}
             style={{ color: "grey", cursor: "pointer" }}
@@ -71,8 +71,8 @@ function Sidebar(props) {
                 className="portfolio"
                 style={
                   props.selectedPortfolio === portfolio.portfolioName
-                    ? { backgroundColor: "white" }
-                    : { backgroundColor: "rgb(239, 242, 245)" }
+                    ? { backgroundColor: "#eff2f5" }
+                    : { backgroundColor: "white" }
                 }
               >
                 <div className="portfolio-details">

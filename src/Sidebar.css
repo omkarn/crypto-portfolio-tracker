@@ -16,9 +16,13 @@
     cursor: pointer;
     background-color: rgb(239, 242, 245);
     border-radius: 8px;
-    padding: 10px;
+    padding: 15px;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 5px
+}
+
+.portfolio:hover{
+    background-color: #f8fafd !important;
 }
 
 .portfolio-name {

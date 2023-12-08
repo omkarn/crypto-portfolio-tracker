@@ -6,6 +6,11 @@
     align-items: center;
 }
 
+.details-top button {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 
 .details-top-right{
     display: flex;
@@ -32,5 +37,7 @@
 
 
 .details-top-h1{
-    font-size: xx-large;
+    font-size: 36px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
