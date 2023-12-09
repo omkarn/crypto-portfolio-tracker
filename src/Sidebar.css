@@ -21,7 +21,7 @@
     margin-bottom: 5px
 }
 
-.portfolio:hover{
+.portfolio:hover {
     background-color: #f8fafd !important;
 }
 
@@ -36,7 +36,9 @@
 }
 
 .sidebar {
-    width: 350px
+    width: 350px;
+    margin-top: 15px;
+    padding-top: 0;
 }
 
 .sidebar .button {

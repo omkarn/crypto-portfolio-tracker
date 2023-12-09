@@ -20,7 +20,7 @@ function Transaction(props) {
   const close = () => {
     props.closeModel(false);
   };
-
+  console.log(props.selectedCrypto);
   const [transactionType, setTransactionType] = useState("buy");
 
   const [formState, setFormState] = useState({
@@ -34,8 +34,6 @@ function Transaction(props) {
     setFormState((prevState) => {
       return { ...prevState, [name]: value };
     });
-
-    console.log(formState);
   };
 
   const setTransaction = (buttonType) => {
@@ -59,15 +57,15 @@ function Transaction(props) {
       if (props.selectedPortfolio === portfolio.portfolioName) {
         let oldTransactions = [...portfolio.transactions];
         oldTransactions.push({
-          cryptoName: props.selectedCrypto.name,
-          cryptoImage: props.selectedCrypto.image,
-          cryptoCurrentPrice: props.selectedCrypto.current_price,
-          cryptoSymbol: props.selectedCrypto.symbol,
+          name: props.selectedCrypto.name,
+          image: props.selectedCrypto.image,
+          current_price: props.selectedCrypto.current_price,
+          symbol: props.selectedCrypto.symbol,
           quantity: formState.quantity,
           buyPrice: formState.pricePerCoin,
           date: formState.date,
-          priceChange24H:props.selectedCrypto.price_change_24h,
-          percentageChange24H:props.selectedCrypto.price_change_percentage_24h
+          price_change_24h: props.selectedCrypto.price_change_24h,
+          price_change_percentage_24h: props.selectedCrypto.price_change_percentage_24h
         })
 
         newPortfolios.push({
@@ -85,7 +83,6 @@ function Transaction(props) {
 
     const updatedData = await getDoc(docRef);
 
-    console.log(updatedData);
     dispatch(
       login({
         ...user,

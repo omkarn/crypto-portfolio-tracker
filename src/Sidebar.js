@@ -82,8 +82,8 @@ function Sidebar(props) {
                     {portfolio.transactions.length === 0
                       ? 0
                       : (portfolio.transactions.reduce((a, b) => {
-                          return a + b.cryptoCurrentPrice * b.quantity;
-                        }, 0)).toFixed(2)}
+                        return a + b.current_price * b.quantity;
+                      }, 0)).toFixed(2)}
                   </p>
                 </div>
                 {edit && (

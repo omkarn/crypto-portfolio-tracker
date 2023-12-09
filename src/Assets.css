@@ -1,27 +1,70 @@
-td,th{
-   text-align: left;
+td,
+th {
+    text-align: left;
 }
 
-.assets{
+.assets {
     width: 100%;
-    margin:20px 20px 0 20px;
+    margin: 20px 20px 0 20px;
 }
 
-table{
+table {
     width: 100%;
 }
 
-h2{
-    font-size: 20px;
+.assets h2 {
+    font-size: 18px;
     font-weight: 700;
+    margin-bottom: 30px;
 }
 
-th{
+.assets th {
+    padding: 12px 0;
+    border-top: 1px solid #EFF2F5;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.assets tr {
+    border-bottom: 1px solid #EFF2F5;
+}
+
+.assets td {
+    padding: 17px 0;
     font-size: 14px;
     font-weight: 600;
 }
 
-td{
-    font-size: 15px;
-    font-weight: 600;
+.assets .tr img {
+    width: 25px;
+}
+
+.assets .tr .name {
+    display: flex;
+    align-items: center;
+}
+
+.assets .small {
+    color: rgb(88, 102, 126);
+    font-size: 12px;
+}
+
+.assets .actions {
+    display: flex;
+    align-items: center;
+}
+
+
+.assets table {
+    border-collapse: collapse;
+}
+
+.add-plus,
+.more {
+
+    color: #808A9D;
+}
+
+.assets .actions .more {
+    padding-left: 8px;
 }

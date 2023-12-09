@@ -30,7 +30,7 @@ function DetailsTop(props) {
           $
           {props.viewingPortfolio.transactions
             .reduce((a, b) => {
-              return a + b.cryptoCurrentPrice * b.quantity;
+              return a + b.current_price * b.quantity;
             }, 0)
             .toFixed(2)}
         </h1>
@@ -39,22 +39,16 @@ function DetailsTop(props) {
             className="span-one"
             style={
               (
-              props.viewingPortfolio.transactions.reduce((a, b) => {
-                return a + b.cryptoCurrentPrice * b.quantity;
-              }, 0) -
-              props.viewingPortfolio.transactions.reduce((a, b) => {
-                return a + b.priceChange24H * b.quantity;
-              }, 0)
-            ).toFixed(2) > 0 ? 
-              { color: "rgb(22, 199, 132)", fontWeight: "700" } : { color: "#EA3943", fontWeight: "700" }}
+                props.viewingPortfolio.transactions.reduce((a, b) => {
+                  return a + b.price_change_24h * b.quantity;
+                }, 0)
+              ).toFixed(2) > 0 ?
+                { color: "rgb(22, 199, 132)", fontWeight: "700" } : { color: "#EA3943", fontWeight: "700" }}
           >
             +{" "}
             {(
               props.viewingPortfolio.transactions.reduce((a, b) => {
-                return a + b.cryptoCurrentPrice * b.quantity;
-              }, 0) -
-              props.viewingPortfolio.transactions.reduce((a, b) => {
-                return a + b.priceChange24H * b.quantity;
+                return a + b.price_change_24h * b.quantity;
               }, 0)
             ).toFixed(2)}
           </span>{" "}
