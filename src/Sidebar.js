@@ -32,7 +32,7 @@ function Sidebar(props) {
     const oldPortfolios = userData.portfolios;
 
     const newPortfolios = oldPortfolios.filter(
-      (portfolio) => portfolio.portfolioName != pName
+      (portfolio) => portfolio.portfolioName !== pName
     );
     await updateDoc(docRef, {
       portfolios: newPortfolios,
@@ -47,8 +47,6 @@ function Sidebar(props) {
     user.portfolios.length === 0
       ? props.setSelectedPortfolio("")
       : props.setSelectedPortfolio(user.portfolios[0].portfolioName);
-    console.log(user.portfolios);
-    console.log("selectedPortfolio" + props.selectedPortfolio);
   };
 
   return (
@@ -105,6 +103,7 @@ function Sidebar(props) {
           visible={addTransactionPopUp}
           closeModel={setaddTransactionPopUp}
           selectedPortfolio={props.selectedPortfolio}
+          setSelectedPortfolio={props.setSelectedPortfolio}
         />
       </div>
     </>

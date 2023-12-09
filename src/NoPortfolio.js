@@ -15,10 +15,10 @@ function NoPortfolio(props) {
           className="image"
           src="https://s2.coinmarketcap.com/static/cloud/img/portfolio/no-portfolio.png?_=a137d56"
         />
-         <div className="heading">
-            <h1>Let’s get started with your first portfolio!</h1>
-            <p>Track profits, losses and valuation all in one place.</p>
-          </div>
+        <div className="heading">
+          <h1>Let’s get started with your first portfolio!</h1>
+          <p>Track profits, losses and valuation all in one place.</p>
+        </div>
         <div className="add-transactions" onClick={handleClick}>
           <div>
             <img
@@ -40,6 +40,7 @@ function NoPortfolio(props) {
           visible={addTransactionPopUp}
           closeModel={setaddTransactionPopUp}
           selectedPortfolio={props.selectedPortfolio}
+          setSelectedPortfolio={props.setSelectedPortfolio}
         />
       </div>
     </>

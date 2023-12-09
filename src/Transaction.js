@@ -20,7 +20,6 @@ function Transaction(props) {
   const close = () => {
     props.closeModel(false);
   };
-  console.log(props.selectedCrypto);
   const [transactionType, setTransactionType] = useState("buy");
 
   const [formState, setFormState] = useState({
@@ -53,29 +52,92 @@ function Transaction(props) {
     let oldPortfolios = [...userData.portfolios];
 
     let newPortfolios = [];
+
+
     oldPortfolios.forEach((portfolio) => {
       if (props.selectedPortfolio === portfolio.portfolioName) {
+
         let oldTransactions = [...portfolio.transactions];
-        oldTransactions.push({
-          name: props.selectedCrypto.name,
-          image: props.selectedCrypto.image,
-          current_price: props.selectedCrypto.current_price,
-          symbol: props.selectedCrypto.symbol,
-          quantity: formState.quantity,
-          buyPrice: formState.pricePerCoin,
-          date: formState.date,
-          price_change_24h: props.selectedCrypto.price_change_24h,
-          price_change_percentage_24h: props.selectedCrypto.price_change_percentage_24h
+        let newTransactions = [];
+        let flag = 0;
+        oldTransactions.map((transaction) => {
+          if (transaction.name === props.selectedCrypto.name) {
+            console.log("Same");
+            flag = 1;
+            if (transactionType === 'buy') {
+              newTransactions.push({
+                ...transaction,
+                buyPrice: (Number(transaction.buyPrice) * Number(transaction.quantity) + Number(formState.pricePerCoin) * Number(formState.quantity)) / (Number(transaction.quantity) + Number(formState.quantity)),
+                quantity: Number(formState.quantity) + Number(transaction.quantity)
+              })
+
+            }
+            if (transactionType === "sell") {
+
+              if (Number(transaction.quantity) > Number(formState.quantity)) {
+                newTransactions.push({
+                  ...transaction,
+                  quantity: Number(transaction.quantity) - Number(formState.quantity)
+                })
+              }
+
+            }
+          }
+          else {
+            newTransactions.push(transaction)
+          }
         })
+
+        if (flag === 0) {
+          if (transactionType === 'buy') {
+            console.log("Different");
+            newTransactions.push({
+              name: props.selectedCrypto.name,
+              image: props.selectedCrypto.image,
+              current_price: props.selectedCrypto.current_price,
+              symbol: props.selectedCrypto.symbol,
+              quantity: formState.quantity,
+              buyPrice: formState.pricePerCoin,
+              date: formState.date,
+              price_change_24h: props.selectedCrypto.price_change_24h,
+              price_change_percentage_24h: props.selectedCrypto.price_change_percentage_24h
+            })
+          }
+        }
 
         newPortfolios.push({
           ...portfolio,
-          transactions: oldTransactions
+          transactions: newTransactions
         });
       } else {
         newPortfolios.push(portfolio);
       }
     });
+
+
+    // oldPortfolios.forEach((portfolio) => {
+    //   if (props.selectedPortfolio === portfolio.portfolioName) {
+    //     let oldTransactions = [...portfolio.transactions];
+    //     oldTransactions.push({
+    //       name: props.selectedCrypto.name,
+    //       image: props.selectedCrypto.image,
+    //       current_price: props.selectedCrypto.current_price,
+    //       symbol: props.selectedCrypto.symbol,
+    //       quantity: formState.quantity,
+    //       buyPrice: formState.pricePerCoin,
+    //       date: formState.date,
+    //       price_change_24h: props.selectedCrypto.price_change_24h,
+    //       price_change_percentage_24h: props.selectedCrypto.price_change_percentage_24h
+    //     })
+
+    //     newPortfolios.push({
+    //       ...portfolio,
+    //       transactions: oldTransactions
+    //     });
+    //   } else {
+    //     newPortfolios.push(portfolio);
+    //   }
+    // });
 
     await updateDoc(docRef, {
       portfolios: newPortfolios,

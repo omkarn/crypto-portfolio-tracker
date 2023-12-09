@@ -48,7 +48,7 @@ function Assets(props) {
                 <td style={transcation.price_change_percentage_24h < 0 ? { color: "#ea3943" } : { color: "#16c784" }}>{transcation.price_change_percentage_24h.toFixed(2)}%</td>
                 <td style={transcation.price_change_percentage_24h < 0 ? { color: "#ea3943" } : { color: "#16c784" }}>{(transcation.price_change_percentage_24h * 7).toFixed(2)}%</td>
                 <td>
-                  <p>$28,304.78</p>
+                  <p>${transcation.quantity * transcation.current_price}</p>
                   <p className="small">
                     {transcation.quantity}{" "}
                     {transcation.symbol.toUpperCase()}

@@ -27,7 +27,6 @@ function Stats(props) {
     let worstPerformer;
     let min = Number.MAX_VALUE;
     props.viewingPortfolio.transactions.forEach((transaction) => {
-      console.log(transaction)
       if (
         max <
         (transaction.current_price * transaction.quantity -

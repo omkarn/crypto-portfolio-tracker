@@ -43,7 +43,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchCryptoData());
-  },[])
+  }, [])
 
   return (
     <div className="App">

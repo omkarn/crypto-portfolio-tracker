@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./Main.css";
 
@@ -14,35 +14,50 @@ import NoPortfolio from "./NoPortfolio";
 import CreateTransactionModel from "./CreateTransactionModel";
 
 function Main() {
-  const [createTransactionPopUp, setCreateTransactionPopUp] = useState(false);
 
   const user = useSelector(selectUser);
 
-  console.log(user);
+
+
+
+  const [selectedPortfolio, setSelectedPortfolio] = useState("");
+
+  useEffect(() => {
+    if (user.portfolios.length !== 0) {
+      setSelectedPortfolio(user.portfolios[0].portfolioName)
+    }
+  }, [])
+
+
+
+  const [createTransactionPopUp, setCreateTransactionPopUp] = useState(false);
+
 
   const handleClick = (e) => {
     setCreateTransactionPopUp(true);
   };
 
-  const createTransaction = (e) => {};
+  console.log(selectedPortfolio);
 
-  const [selectedPortfolio, setSelectedPortfolio] = useState("");
+  let viewingPortfolio = "";
 
-  let viewingPortfolio;
-  if (selectedPortfolio != "") {
-    (user.portfolios).forEach((portfolio)=>{
-      if(portfolio.portfolioName===selectedPortfolio){
-        viewingPortfolio={...portfolio};
+  console.log(user.portfolios)
+  if (selectedPortfolio !== "") {
+    (user.portfolios).forEach((portfolio) => {
+      if (portfolio.portfolioName === selectedPortfolio) {
+        viewingPortfolio = { ...portfolio };
       }
     })
   } else {
     viewingPortfolio = user.portfolios[0];
   }
+  console.log(viewingPortfolio);
 
   return (
     <div className="main">
       {user.portfolios.length === 0 ? (
-        <NoPortfolio selectedPortfolio={selectedPortfolio} />
+        <NoPortfolio selectedPortfolio={selectedPortfolio}
+          setSelectedPortfolio={setSelectedPortfolio} />
       ) : (
         <>
           <Sidebar

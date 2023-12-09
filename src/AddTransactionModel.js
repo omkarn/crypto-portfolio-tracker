@@ -29,6 +29,7 @@ function AddTransaction(props) {
   //console.log(user);
 
   const createPortfolio = async (e) => {
+    props.setSelectedPortfolio(input)
     e.preventDefault();
 
     const docRef = doc(db, "users", user.uid);
@@ -48,17 +49,17 @@ function AddTransaction(props) {
       }),
     });
 
-    const updatedData= (await getDoc(docRef));
+    const updatedData = (await getDoc(docRef));
 
     console.log(updatedData);
     dispatch(
       login({
         ...user,
-        portfolios : updatedData.data().portfolios,
+        portfolios: updatedData.data().portfolios,
       })
     );
 
-    console.log(user);
+    close();
   };
 
   return (
