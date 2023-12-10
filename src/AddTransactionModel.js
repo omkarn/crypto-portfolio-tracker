@@ -28,36 +28,31 @@ function AddTransaction(props) {
   const dispatch = useDispatch();
   //console.log(user);
 
-  const createPortfolio = async (e) => {
-    props.setSelectedPortfolio(input)
-    e.preventDefault();
+  const createPortfolio = async () => {
+    
 
     const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
     const userData = docSnap.data();
-    const oldPortfolios = userData.portfolios;
-    oldPortfolios.push({
+    let newPortfolios = [...userData.portfolios];
+    newPortfolios.push({
       portfolioName: input,
       transactions: [],
     });
-    // console.log(oldPortfolios)
+   console.log(newPortfolios)
 
     await updateDoc(docRef, {
-      portfolios: arrayUnion({
-        portfolioName: input,
-        transactions: [],
-      }),
+      portfolios: newPortfolios
     });
 
-    const updatedData = (await getDoc(docRef));
-
-    console.log(updatedData);
     dispatch(
       login({
         ...user,
-        portfolios: updatedData.data().portfolios,
+        portfolios: newPortfolios
       })
     );
+
+    props.setSelectedPortfolio(input);
 
     close();
   };

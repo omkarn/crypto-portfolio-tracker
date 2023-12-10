@@ -14,50 +14,45 @@ import NoPortfolio from "./NoPortfolio";
 import CreateTransactionModel from "./CreateTransactionModel";
 
 function Main() {
-
   const user = useSelector(selectUser);
-
-
-
 
   const [selectedPortfolio, setSelectedPortfolio] = useState("");
 
   useEffect(() => {
     if (user.portfolios.length !== 0) {
-      setSelectedPortfolio(user.portfolios[0].portfolioName)
+      setSelectedPortfolio(user.portfolios[0].portfolioName);
     }
-  }, [])
-
-
+  }, []);
 
   const [createTransactionPopUp, setCreateTransactionPopUp] = useState(false);
-
 
   const handleClick = (e) => {
     setCreateTransactionPopUp(true);
   };
 
-  console.log(selectedPortfolio);
+  // console.log(selectedPortfolio);
 
   let viewingPortfolio = "";
 
-  console.log(user.portfolios)
+  // console.log(user.portfolios)
   if (selectedPortfolio !== "") {
-    (user.portfolios).forEach((portfolio) => {
+    user.portfolios.forEach((portfolio) => {
       if (portfolio.portfolioName === selectedPortfolio) {
         viewingPortfolio = { ...portfolio };
       }
-    })
+    });
   } else {
     viewingPortfolio = user.portfolios[0];
   }
-  console.log(viewingPortfolio);
+   console.log(viewingPortfolio);
 
   return (
     <div className="main">
       {user.portfolios.length === 0 ? (
-        <NoPortfolio selectedPortfolio={selectedPortfolio}
-          setSelectedPortfolio={setSelectedPortfolio} />
+        <NoPortfolio
+          selectedPortfolio={selectedPortfolio}
+          setSelectedPortfolio={setSelectedPortfolio}
+        />
       ) : (
         <>
           <Sidebar
@@ -66,9 +61,18 @@ function Main() {
           />
           {viewingPortfolio.transactions.length !== 0 ? (
             <section className="middle">
-              <DetailsTop selectedPortfolio={selectedPortfolio} viewingPortfolio={viewingPortfolio} />
-              <Stats selectedPortfolio={selectedPortfolio} viewingPortfolio={viewingPortfolio} />
-              <Assets selectedPortfolio={selectedPortfolio} viewingPortfolio={viewingPortfolio} />
+              <DetailsTop
+                selectedPortfolio={selectedPortfolio}
+                viewingPortfolio={viewingPortfolio}
+              />
+              <Stats
+                selectedPortfolio={selectedPortfolio}
+                viewingPortfolio={viewingPortfolio}
+              />
+              <Assets
+                selectedPortfolio={selectedPortfolio}
+                viewingPortfolio={viewingPortfolio}
+              />
             </section>
           ) : (
             <>
