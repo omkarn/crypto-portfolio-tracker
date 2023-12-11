@@ -16,13 +16,6 @@ import CreateTransactionModel from "./CreateTransactionModel";
 function Main() {
   const user = useSelector(selectUser);
 
-  const [selectedPortfolio, setSelectedPortfolio] = useState("");
-
-  useEffect(() => {
-    if (user.portfolios.length !== 0) {
-      setSelectedPortfolio(user.portfolios[0].portfolioName);
-    }
-  }, []);
 
   const [createTransactionPopUp, setCreateTransactionPopUp] = useState(false);
 
@@ -30,48 +23,27 @@ function Main() {
     setCreateTransactionPopUp(true);
   };
 
-  // console.log(selectedPortfolio);
-
-  let viewingPortfolio = "";
+ 
 
   // console.log(user.portfolios)
-  if (selectedPortfolio !== "") {
-    user.portfolios.forEach((portfolio) => {
-      if (portfolio.portfolioName === selectedPortfolio) {
-        viewingPortfolio = { ...portfolio };
-      }
-    });
-  } else {
-    viewingPortfolio = user.portfolios[0];
-  }
-   console.log(viewingPortfolio);
+ 
 
   return (
     <div className="main">
       {user.portfolios.length === 0 ? (
         <NoPortfolio
-          selectedPortfolio={selectedPortfolio}
-          setSelectedPortfolio={setSelectedPortfolio}
         />
       ) : (
         <>
           <Sidebar
-            selectedPortfolio={selectedPortfolio}
-            setSelectedPortfolio={setSelectedPortfolio}
           />
-          {viewingPortfolio.transactions.length !== 0 ? (
+          {user.viewingPortfolio.transactions.length !== 0 ? (
             <section className="middle">
               <DetailsTop
-                selectedPortfolio={selectedPortfolio}
-                viewingPortfolio={viewingPortfolio}
               />
               <Stats
-                selectedPortfolio={selectedPortfolio}
-                viewingPortfolio={viewingPortfolio}
               />
               <Assets
-                selectedPortfolio={selectedPortfolio}
-                viewingPortfolio={viewingPortfolio}
               />
             </section>
           ) : (
@@ -91,7 +63,6 @@ function Main() {
                 <CreateTransactionModel
                   visible={createTransactionPopUp}
                   closeModel={setCreateTransactionPopUp}
-                  selectedPortfolio={selectedPortfolio}
                 />
               </div>
             </>

@@ -7,7 +7,14 @@ import Transaction from "./Transaction";
 import AddIcon from '@mui/icons-material/Add';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
+import { selectUser } from "./features/userSlice";
+import { useSelector } from "react-redux";
+
 function Assets(props) {
+
+   
+  const user = useSelector(selectUser);
+
 
   const [transactionVisible, setTransactionVisible] = useState(false);
   const [passTransaction, setPassTransaction] = useState({});
@@ -35,7 +42,7 @@ function Assets(props) {
           </tr>
         </thead>
         <tbody>
-          {props.viewingPortfolio.transactions.map((transcation) => {
+          {user.viewingPortfolio.transactions.map((transcation) => {
             return (
               <tr className="tr">
                 <td className="name">
@@ -48,7 +55,7 @@ function Assets(props) {
                 <td style={transcation.price_change_percentage_24h < 0 ? { color: "#ea3943" } : { color: "#16c784" }}>{transcation.price_change_percentage_24h.toFixed(2)}%</td>
                 <td style={transcation.price_change_percentage_24h < 0 ? { color: "#ea3943" } : { color: "#16c784" }}>{(transcation.price_change_percentage_24h * 7).toFixed(2)}%</td>
                 <td>
-                  <p>${transcation.quantity * transcation.current_price}</p>
+                  <p>${(transcation.quantity * transcation.current_price).toFixed(2)}</p>
                   <p className="small">
                     {transcation.quantity}{" "}
                     {transcation.symbol.toUpperCase()}
@@ -84,7 +91,6 @@ function Assets(props) {
                       visible={transactionVisible}
                       closeModel={setTransactionVisible}
                       selectedCrypto={passTransaction}
-                      selectedPortfolio={props.selectedPortfolio}
                     />
                   </div>
                   <MoreHorizIcon style={{ color: "grey", cursor: "pointer", fontSize: "27px" }} className="more" />

@@ -53,6 +53,7 @@ function LoginModel(props) {
                   displayName: formState.name,
                   uid: userAuth.user.uid,
                   portfolios: [],
+                  viewingPortfolio: ""
                 })
               );
             })
@@ -87,7 +88,8 @@ function LoginModel(props) {
             email: userData.email,
             displayName: userData.name,
             uid: userData.uid,
-            portfolios: userData.portfolios
+            portfolios: userData.portfolios,
+            viewingPortfolio:userData.portfolios[0]
           })
         );
       })

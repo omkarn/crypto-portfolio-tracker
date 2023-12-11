@@ -1,20 +1,28 @@
 import React from "react";
 
+import { selectUser } from "./features/userSlice";
+import { useSelector } from "react-redux";
+
 import "./Stats.css";
 
 function Stats(props) {
+
+  
+  const user = useSelector(selectUser);
+
+
   const allTimeProfit = (
-    props.viewingPortfolio.transactions.reduce((a, b) => {
+    user.viewingPortfolio.transactions.reduce((a, b) => {
       return a + b.current_price * b.quantity;
     }, 0) -
-    props.viewingPortfolio.transactions.reduce((a, b) => {
+    user.viewingPortfolio.transactions.reduce((a, b) => {
       return a + b.buyPrice * b.quantity;
     }, 0)
   ).toFixed(2);
 
   const allTimeProfitPercentage = (
     (allTimeProfit /
-      props.viewingPortfolio.transactions.reduce((a, b) => {
+      user.viewingPortfolio.transactions.reduce((a, b) => {
         return a + b.buyPrice * b.quantity;
       }, 0)) *
     100
@@ -26,7 +34,7 @@ function Stats(props) {
 
     let worstPerformer;
     let min = Number.MAX_VALUE;
-    props.viewingPortfolio.transactions.forEach((transaction) => {
+    user.viewingPortfolio.transactions.forEach((transaction) => {
       if (
         max <
         (transaction.current_price * transaction.quantity -

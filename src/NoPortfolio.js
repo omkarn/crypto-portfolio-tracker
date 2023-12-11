@@ -39,8 +39,6 @@ function NoPortfolio(props) {
         <AddTransactionModel
           visible={addTransactionPopUp}
           closeModel={setaddTransactionPopUp}
-          selectedPortfolio={props.selectedPortfolio}
-          setSelectedPortfolio={props.setSelectedPortfolio}
         />
       </div>
     </>

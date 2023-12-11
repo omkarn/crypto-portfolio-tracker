@@ -17,6 +17,8 @@ import {
 import { db } from "./firebase";
 
 function Transaction(props) {
+  const user = useSelector(selectUser);
+
   const close = () => {
     props.closeModel(false);
   };
@@ -39,7 +41,7 @@ function Transaction(props) {
     setTransactionType(buttonType);
   };
 
-  const user = useSelector(selectUser);
+
   const dispatch = useDispatch();
 
   const addTransaction = async (e) => {
@@ -55,7 +57,7 @@ function Transaction(props) {
 
 
     oldPortfolios.forEach((portfolio) => {
-      if (props.selectedPortfolio === portfolio.portfolioName) {
+      if (user.viewingPortfolio.portfolioName === portfolio.portfolioName) {
 
         let oldTransactions = [...portfolio.transactions];
         let newTransactions = [];
@@ -139,18 +141,27 @@ function Transaction(props) {
     //   }
     // });
 
-    await updateDoc(docRef, {
-      portfolios: newPortfolios,
-    });
+    
 
-    const updatedData = await getDoc(docRef);
+    let newViewingPortfolio;
+    newPortfolios.forEach((portfolio) => {
+      if (portfolio.portfolioName === user.viewingPortfolio.portfolioName)
+        newViewingPortfolio = portfolio;
+    })
+
+    console.log(newViewingPortfolio)
 
     dispatch(
       login({
         ...user,
-        portfolios: updatedData.data().portfolios,
+        portfolios: newPortfolios,
+        viewingPortfolio: newViewingPortfolio
       })
     );
+
+    await updateDoc(docRef, {
+      portfolios: newPortfolios,
+    });
 
     close();
   };

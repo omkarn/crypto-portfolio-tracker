@@ -26,6 +26,20 @@ function Sidebar(props) {
   const [edit, setEdit] = useState(false);
 
   const deletePortfolio = async (pName) => {
+
+    let viewingPortfolioNew;
+
+    user.portfolios.length-1 === 0
+    ? viewingPortfolioNew = ""
+    : viewingPortfolioNew =(user.portfolios[0].portfolioName);
+
+    dispatch(
+      login({
+        ...user,
+        viewingPortfolio: viewingPortfolioNew
+      })
+    );
+
     const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
     const userData = docSnap.data();
@@ -38,15 +52,15 @@ function Sidebar(props) {
       portfolios: newPortfolios,
     });
 
+   
+
     dispatch(
       login({
         ...user,
-        portfolios: newPortfolios,
+        portfolios: newPortfolios
       })
     );
-    user.portfolios.length === 0
-      ? props.setSelectedPortfolio("")
-      : props.setSelectedPortfolio(user.portfolios[0].portfolioName);
+   
   };
 
   return (
@@ -64,11 +78,16 @@ function Sidebar(props) {
             return (
               <div
                 onClick={() => {
-                  props.setSelectedPortfolio(portfolio.portfolioName);
+                  dispatch(
+                    login({
+                      ...user,
+                      viewingPortfolio: portfolio
+                    })
+                  );
                 }}
                 className="portfolio"
                 style={
-                  props.selectedPortfolio === portfolio.portfolioName
+                  user.viewingPortfolio.portfolioName === portfolio.portfolioName
                     ? { backgroundColor: "#eff2f5" }
                     : { backgroundColor: "white" }
                 }
@@ -102,8 +121,6 @@ function Sidebar(props) {
         <AddTransactionModel
           visible={addTransactionPopUp}
           closeModel={setaddTransactionPopUp}
-          selectedPortfolio={props.selectedPortfolio}
-          setSelectedPortfolio={props.setSelectedPortfolio}
         />
       </div>
     </>

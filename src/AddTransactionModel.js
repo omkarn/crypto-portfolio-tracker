@@ -48,11 +48,10 @@ function AddTransaction(props) {
     dispatch(
       login({
         ...user,
-        portfolios: newPortfolios
+        portfolios: newPortfolios,
+        viewingPortfolio: newPortfolios[newPortfolios.length-1]
       })
     );
-
-    props.setSelectedPortfolio(input);
 
     close();
   };

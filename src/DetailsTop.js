@@ -5,6 +5,10 @@ import "./DetailsTop.css";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 
+import { selectUser } from "./features/userSlice";
+
+import { useSelector } from "react-redux";
+
 import CreateTransactionModel from "./CreateTransactionModel";
 
 function DetailsTop(props) {
@@ -13,6 +17,8 @@ function DetailsTop(props) {
   const handleClick = (e) => {
     setCreateTransactionPopUp(true);
   };
+
+  const user = useSelector(selectUser);
 
   return (
     <div className="details-top">
@@ -24,11 +30,11 @@ function DetailsTop(props) {
             fontSize: "16px",
           }}
         >
-          {props.viewingPortfolio.portfolioName}
+          {user.viewingPortfolio.portfolioName}
         </p>
         <h1 className="details-top-h1">
           $
-          {props.viewingPortfolio.transactions
+          {user.viewingPortfolio.transactions
             .reduce((a, b) => {
               return a + b.current_price * b.quantity;
             }, 0)
@@ -39,7 +45,7 @@ function DetailsTop(props) {
             className="span-one"
             style={
               (
-                props.viewingPortfolio.transactions.reduce((a, b) => {
+                user.viewingPortfolio.transactions.reduce((a, b) => {
                   return a + b.price_change_24h * b.quantity;
                 }, 0)
               ).toFixed(2) > 0 ?
@@ -47,7 +53,7 @@ function DetailsTop(props) {
           >
             +{" "}
             {(
-              props.viewingPortfolio.transactions.reduce((a, b) => {
+              user.viewingPortfolio.transactions.reduce((a, b) => {
                 return a + b.price_change_24h * b.quantity;
               }, 0)
             ).toFixed(2)}
@@ -75,7 +81,6 @@ function DetailsTop(props) {
           <CreateTransactionModel
             visible={createTransactionPopUp}
             closeModel={setCreateTransactionPopUp}
-            selectedPortfolio={props.selectedPortfolio}
           />
         </div>
       </div>

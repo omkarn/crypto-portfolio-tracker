@@ -111,7 +111,6 @@ function CreateTransactionModel(props) {
           visible={transactionVisible}
           closeModel={setTransactionVisible}
           selectedCrypto={selectedCrypto}
-          selectedPortfolio={props.selectedPortfolio}
         />
       </div>
     </>

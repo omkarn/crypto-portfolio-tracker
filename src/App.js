@@ -32,7 +32,8 @@ function App() {
             email: userData.email,
             displayName: userData.displayName,
             uid: userData.id,
-            portfolios: userData.portfolios
+            portfolios: userData.portfolios,
+            viewingPortfolio:userData.portfolios[0]
           })
         );
       } else {
