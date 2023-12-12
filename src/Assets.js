@@ -32,11 +32,11 @@ function Assets(props) {
           <tr className="th">
             <th>Name</th>
             <th>Price</th>
-            <th>1h%</th>
-            <th>24h%</th>
-            <th>7d%</th>
-            <th>Holdings</th>
-            <th>Avg. Buy Price</th>
+            <th className="skipped">1h%</th>
+            <th className="skipped">24h%</th>
+            <th className="skipped">7d%</th>
+            <th className="skipped">Holdings</th>
+            <th className="skipped">Avg. Buy Price</th>
             <th>Profit/Loss</th>
             <th>Actions</th>
           </tr>
@@ -48,20 +48,20 @@ function Assets(props) {
                 <td className="name">
                   <img src={transcation.image} />
                   <p style={{ padding: "0 8px" }}>{transcation.name}</p>
-                  <p style={{ color: "rgb(128, 138, 157)", fontWeight: 500 }}>{transcation.symbol.toUpperCase()}</p>
+                  <p className="skipped" style={{ color: "rgb(128, 138, 157)", fontWeight: 500 }}>{transcation.symbol.toUpperCase()}</p>
                 </td>
                 <td>${transcation.current_price}</td>
-                <td style={transcation.price_change_percentage_24h < 0 ? { color: "#ea3943" } : { color: "#16c784" }}>{(transcation.price_change_percentage_24h / 24).toFixed(2)}%</td>
-                <td style={transcation.price_change_percentage_24h < 0 ? { color: "#ea3943" } : { color: "#16c784" }}>{transcation.price_change_percentage_24h.toFixed(2)}%</td>
-                <td style={transcation.price_change_percentage_24h < 0 ? { color: "#ea3943" } : { color: "#16c784" }}>{(transcation.price_change_percentage_24h * 7).toFixed(2)}%</td>
-                <td>
+                <td className="skipped" style={transcation.price_change_percentage_24h < 0 ? { color: "#ea3943" } : { color: "#16c784" }}>{(transcation.price_change_percentage_24h / 24).toFixed(2)}%</td>
+                <td className="skipped" style={transcation.price_change_percentage_24h < 0 ? { color: "#ea3943" } : { color: "#16c784" }}>{transcation.price_change_percentage_24h.toFixed(2)}%</td>
+                <td className="skipped" style={transcation.price_change_percentage_24h < 0 ? { color: "#ea3943" } : { color: "#16c784" }}>{(transcation.price_change_percentage_24h * 7).toFixed(2)}%</td>
+                <td className="skipped">
                   <p>${(transcation.quantity * transcation.current_price).toFixed(2)}</p>
                   <p className="small">
                     {transcation.quantity}{" "}
                     {transcation.symbol.toUpperCase()}
                   </p>
                 </td>
-                <td>${transcation.buyPrice}</td>
+                <td className="skipped">${transcation.buyPrice}</td>
                 <td>
                   <p>
                     {(transcation.current_price - transcation.buyPrice) >
@@ -93,7 +93,7 @@ function Assets(props) {
                       selectedCrypto={passTransaction}
                     />
                   </div>
-                  <MoreHorizIcon style={{ color: "grey", cursor: "pointer", fontSize: "27px" }} className="more" />
+                  <MoreHorizIcon style={{ color: "grey", cursor: "pointer", fontSize: "27px"}} className="more" />
                 </td>
               </tr>
             );

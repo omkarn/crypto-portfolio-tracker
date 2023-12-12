@@ -7,7 +7,7 @@ function Footer() {
     <>
       <div className="footer">
         <div className="img-div">
-          <img className="footer-logo" alt="logo" src="./assets/header-logo.svg" />
+          <img className="footer-logo" alt="logo" src="https://s2.coinmarketcap.com/static/cloud/img/coinmarketcap_1.svg?_=9656849" />
         </div>
         <div className="info-div">
           <div>

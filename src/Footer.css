@@ -1,9 +1,8 @@
 .footer {
     display: flex;
     flex-direction: row;
-    padding-top: 50px;
+    padding: 50px 20px;
     border-top: 1px solid #EFF2F5;
-    padding-bottom: 50px;
 }
 
 .img-div {
@@ -47,12 +46,12 @@ ul {
 
 @media only screen and (max-width: 900px) {
     .footer {
-        padding-top: 0;
         flex-direction: column;
     }
 
     .img-div {
         width: 100%;
+        margin-bottom: 50px;
     }
 
     .info-div {

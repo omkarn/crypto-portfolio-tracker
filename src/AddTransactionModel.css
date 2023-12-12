@@ -28,6 +28,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: baseline;
 }
 
 .add-transaction-model-container h1 {
@@ -79,7 +80,8 @@
 
 @media only screen and (max-width: 450px) {
     .add-transaction-model-container {
-        width: 90vw;
-        border-radius: 10px;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
     }
 }
