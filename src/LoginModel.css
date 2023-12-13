@@ -70,7 +70,7 @@
   }
 
 
-  @media only screen and (max-width: 450px) {
+  @media only screen and (max-width: 900px) {
     .login-model-container {
         width: 100vw;
         border-radius: 0px;

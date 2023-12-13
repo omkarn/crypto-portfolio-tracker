@@ -10,6 +10,8 @@ function Stats(props) {
 
   const user = useSelector(selectUser);
 
+  console.log(user.viewingPortfolio)
+
 
   const allTimeProfit = (
     user.viewingPortfolio.transactions.reduce((a, b) => {
@@ -30,10 +32,10 @@ function Stats(props) {
 
   const getPerformers = () => {
     let bestPerformer;
-    let max = 0;
+    let max = Number.MIN_SAFE_INTEGER;
 
     let worstPerformer;
-    let min = Number.MAX_VALUE;
+    let min = Number.MAX_SAFE_INTEGER;
     user.viewingPortfolio.transactions.forEach((transaction) => {
       if (
         max <
@@ -55,8 +57,9 @@ function Stats(props) {
           transaction.buyPrice * transaction.quantity)
       }
     });
-
+    console.log(bestPerformer)
     return {
+     
       bestPerformer: {
         name: bestPerformer.name,
         image: bestPerformer.image,

@@ -60,6 +60,8 @@ function Sidebar(props) {
         portfolios: newPortfolios
       })
     );
+
+    setEdit(false)
    
   };
 
