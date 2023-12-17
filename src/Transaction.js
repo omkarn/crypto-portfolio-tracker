@@ -16,6 +16,8 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase";
 
+import CreateTransactionModel from "./CreateTransactionModel";
+
 function Transaction(props) {
   const user = useSelector(selectUser);
 
@@ -149,7 +151,7 @@ function Transaction(props) {
         newViewingPortfolio = portfolio;
     })
 
-    console.log(newViewingPortfolio)
+    console.log(newViewingPortfolio);
 
     dispatch(
       login({
@@ -163,6 +165,13 @@ function Transaction(props) {
       portfolios: newPortfolios,
     });
 
+    close();
+  };
+
+  const [createTransactionPopUp, setCreateTransactionPopUp] = useState(false);
+
+  const handleClick = (e) => {
+    setCreateTransactionPopUp(true);
     close();
   };
 
@@ -221,7 +230,7 @@ function Transaction(props) {
               Sell
             </button>
           </div>
-          <div className="selected-crypto">
+          <div onClick={handleClick} className="selected-crypto">
             <div className="name">
               <img
                 className="top-crypto-image"
@@ -251,6 +260,12 @@ function Transaction(props) {
               ></path>
             </svg>
           </div>
+          <div className="create-transaction-model">
+          <CreateTransactionModel
+            visible={createTransactionPopUp}
+            closeModel={setCreateTransactionPopUp}
+          />
+        </div>
           <div className="transaction-details">
             <div>
               <p>Quantity</p>

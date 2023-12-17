@@ -44,19 +44,21 @@ function DetailsTop(props) {
           <span
             className="span-one"
             style={
-              (
-                user.viewingPortfolio.transactions.reduce((a, b) => {
+              user.viewingPortfolio.transactions
+                .reduce((a, b) => {
                   return a + b.price_change_24h * b.quantity;
                 }, 0)
-              ).toFixed(2) > 0 ?
-                { color: "rgb(22, 199, 132)", fontWeight: "700" } : { color: "#EA3943", fontWeight: "700" }}
+                .toFixed(2) > 0
+                ? { color: "rgb(22, 199, 132)", fontWeight: "700" }
+                : { color: "#EA3943", fontWeight: "700" }
+            }
           >
             +{" "}
-            {(
-              user.viewingPortfolio.transactions.reduce((a, b) => {
+            {user.viewingPortfolio.transactions
+              .reduce((a, b) => {
                 return a + b.price_change_24h * b.quantity;
               }, 0)
-            ).toFixed(2)}
+              .toFixed(2)}
           </span>{" "}
           <span
             className="span-two"

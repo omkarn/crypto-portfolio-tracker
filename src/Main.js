@@ -22,7 +22,6 @@ function Main() {
   const handleClick = (e) => {
     setCreateTransactionPopUp(true);
   };
-
  
 
   // console.log(user.portfolios)
