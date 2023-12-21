@@ -44,7 +44,7 @@ function Main() {
     <>
       {loading === true ? (
         <div className="loader">
-        <CircularProgress />
+          <CircularProgress />
         </div>
       ) : (
         <div className="main" onClick={toggleDelete}>
