@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { db } from "./firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { Tooltip } from "@mui/material";
 
 function Assets(props) {
   const user = useSelector(selectUser);
@@ -28,48 +29,45 @@ function Assets(props) {
   };
 
   const deleteTransaction = async (transactionName) => {
-
     const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
     const userData = docSnap.data();
     const oldPortfolios = userData.portfolios;
-    let newPortfolios=[];
+    let newPortfolios = [];
 
-    oldPortfolios.forEach((portfolio)=>{
-      if(portfolio.portfolioName===user.viewingPortfolio.portfolioName){
-        let oldTransactions =portfolio.transactions;
+    oldPortfolios.forEach((portfolio) => {
+      if (portfolio.portfolioName === user.viewingPortfolio.portfolioName) {
+        let oldTransactions = portfolio.transactions;
         let newTransactions = [];
 
-        oldTransactions.forEach((transaction)=>{
-          if(transaction.name!==transactionName){
-            newTransactions.push(transaction)
+        oldTransactions.forEach((transaction) => {
+          if (transaction.name !== transactionName) {
+            newTransactions.push(transaction);
           }
-        })
+        });
 
         newPortfolios.push({
           ...portfolio,
-          transactions:newTransactions
-        })
-
-      }
-      else{
+          transactions: newTransactions,
+        });
+      } else {
         newPortfolios.push(portfolio);
       }
-    })
+    });
 
     let newViewingPortfolio;
     newPortfolios.forEach((portfolio) => {
       if (portfolio.portfolioName === user.viewingPortfolio.portfolioName)
         newViewingPortfolio = portfolio;
-    })
+    });
 
-    console.log(user.viewingPortfolio)
+    console.log(user.viewingPortfolio);
 
     dispatch(
       login({
         ...user,
         portfolios: newPortfolios,
-        viewingPortfolio: newViewingPortfolio
+        viewingPortfolio: newViewingPortfolio,
       })
     );
 
@@ -77,8 +75,8 @@ function Assets(props) {
       portfolios: newPortfolios,
     });
 
-    setDeleteVisible(false)
-  }
+    setDeleteVisible(false);
+  };
 
   return (
     <div className="assets">
@@ -153,7 +151,7 @@ function Assets(props) {
                     {transcation.quantity} {transcation.symbol.toUpperCase()}
                   </p>
                 </td>
-                <td className="skipped">${transcation.buyPrice}</td>
+                <td className="skipped">${parseFloat(transcation.buyPrice).toFixed(2)}</td>
                 <td>
                   <p>
                     {transcation.current_price - transcation.buyPrice > 0
@@ -182,18 +180,20 @@ function Assets(props) {
                   </p>
                 </td>
                 <td className="actions">
-                  <AddIcon
-                    onClick={() => {
-                      handleClick(transcation);
-                    }}
-                    style={{
-                      color: "grey",
-                      cursor: "pointer",
-                      fontSize: "27px",
-                      background: "none",
-                    }}
-                    className="add-plus"
-                  />
+                  <Tooltip title="Add Transaction">
+                    <AddIcon
+                      onClick={() => {
+                        handleClick(transcation);
+                      }}
+                      style={{
+                        color: "grey",
+                        cursor: "pointer",
+                        fontSize: "27px",
+                        background: "none",
+                      }}
+                      className="add-plus"
+                    />
+                  </Tooltip>
                   <div className="transaction-model">
                     <Transaction
                       visible={transactionVisible}
@@ -201,23 +201,28 @@ function Assets(props) {
                       selectedCrypto={passTransaction}
                     />
                   </div>
-                  {!deleteVisible && <MoreHorizIcon
-                    onClick={() => {
-                      setDeleteVisible(true);
-                    }}
-                    style={{
-                      color: "grey",
-                      cursor: "pointer",
-                      fontSize: "27px",
-                    }}
-                    className="more"
-                  />}
-                  {deleteVisible && (
-                  <DeleteForeverOutlinedIcon
-                    onClick={() => deleteTransaction(transcation.name)}
-                    style={{ color: "red", cursor: "pointer" }}
-                  />
-                )}
+                  {!props.setDelete && (
+                    <Tooltip title="More">
+                      <MoreHorizIcon
+                        onClick={props.toggleDelete}
+                        style={{
+                          color: "grey",
+                          cursor: "pointer",
+                          fontSize: "27px",
+                        }}
+                        name="delete"
+                        className="more"
+                      />
+                    </Tooltip>
+                  )}
+                  {props.setDelete && (
+                    <Tooltip title="Delete">
+                      <DeleteForeverOutlinedIcon
+                        onClick={() => deleteTransaction(transcation.name)}
+                        style={{ color: "red", cursor: "pointer" }}
+                      />
+                    </Tooltip>
+                  )}
                 </td>
               </tr>
             );

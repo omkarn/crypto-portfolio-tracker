@@ -42,6 +42,14 @@
     margin-bottom: 8px;
 }
 
+.switch{
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    margin-right:30px
+}
+
 
 @media only screen and (max-width: 900px) {
     .details-top{
@@ -50,5 +58,8 @@
     }
     .details-top button{
         margin-top: 25px;
+    }
+    .switch{
+        display: none;
     }
 }

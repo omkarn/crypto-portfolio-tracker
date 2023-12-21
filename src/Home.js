@@ -33,11 +33,18 @@ function Home() {
             </button>
           </div>
         </div>
-        <img
-          className="screenshot"
-          alt="screenshot"
-          src="./assets/screenshot.png"
-        />
+        <div className="screenshot">
+          <img
+            className="screenshot-pc"
+            alt="screenshot"
+            src="./assets/pc.jpeg"
+          />
+          <img
+            className="screenshot-mobile"
+            alt="screenshot"
+            src="./assets/mobile.jpeg"
+          />
+        </div>
       </div>
       <div className="login-model">
         <LoginModel

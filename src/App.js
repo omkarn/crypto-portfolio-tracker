@@ -7,10 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
 import { useEffect } from "react";
 import { auth } from "./firebase";
-import { display } from "@mui/system";
 import { fetchCryptoData, selectCryptoData } from "./features/cryptoSlice";
 
-import { collection, setDoc, doc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "./firebase";
 
 function App() {
@@ -24,18 +23,20 @@ function App() {
         const docRef = doc(db, "users", userAuth.uid);
         const docSnap = await getDoc(docRef);
         const userData = docSnap.data();
-        dispatch(
-          login({
-            // email: userAuth.email,
-            // displayName: userAuth.name,
-            // uid: userAuth.uid,
-            email: userData.email,
-            displayName: userData.displayName,
-            uid: userData.id,
-            portfolios: userData.portfolios,
-            viewingPortfolio:userData.portfolios[0]
-          })
-        );
+        setTimeout(() => {
+          dispatch(
+            login({
+              // email: userAuth.email,
+              // displayName: userAuth.name,
+              // uid: userAuth.uid,
+              displayName: userData.displayName,
+              uid: userData.id,
+              portfolios: userData.portfolios,
+              email: userData.email,
+              viewingPortfolio: userData.portfolios[0],
+            })
+          );
+        }, "100");
       } else {
         dispatch(logout());
       }
@@ -44,7 +45,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchCryptoData());
-  }, [])
+  }, []);
 
   return (
     <div className="App">
@@ -52,7 +53,7 @@ function App() {
       {user == null ? (
         <Home />
       ) : (
-        <Main />
+          <Main />
       )}
       <Footer />
     </div>

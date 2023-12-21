@@ -1,0 +1,12 @@
+.pie-chart-div{
+    margin-top : 20px;
+}
+
+
+
+
+@media only screen and (max-width: 900px) {
+    .pie-chart-div{
+        display:none
+    }
+}

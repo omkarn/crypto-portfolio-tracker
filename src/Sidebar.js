@@ -12,6 +12,7 @@ import { selectCryptoData } from "./features/cryptoSlice";
 import { db } from "./firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import AddTransactionModel from "./AddTransactionModel";
+import Tooltip from '@mui/material/Tooltip';
 
 function Sidebar(props) {
   const [addTransactionPopUp, setaddTransactionPopUp] = useState(false);
@@ -70,10 +71,12 @@ function Sidebar(props) {
       <div className="sidebar">
         <div className="portfolio-header">
           <span>My Portfolios</span>
+          <Tooltip title="Edit">
           <ModeEditOutlineOutlinedIcon
             onClick={() => setEdit(!edit)}
             style={{ color: "grey", cursor: "pointer" }}
           />
+          </Tooltip>
         </div>
         <div className="portfolios">
           {user.portfolios.map((portfolio) => {
@@ -106,10 +109,12 @@ function Sidebar(props) {
                   </p>
                 </div>
                 {edit && (
+                  <Tooltip title="Delete">
                   <DeleteForeverOutlinedIcon
                     onClick={() => deletePortfolio(portfolio.portfolioName)}
                     style={{ color: "red", cursor: "pointer" }}
                   />
+                  </Tooltip>
                 )}
               </div>
             );

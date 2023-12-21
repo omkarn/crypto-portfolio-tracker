@@ -79,7 +79,6 @@
 .transaction-model-container .selected-crypto:hover {
     background-color: #EFF2F5;
     border-radius: 8px;
-    cursor: pointer;
 }
 
 .transaction-model-container .selected-crypto p {

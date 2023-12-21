@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 
 import { selectUser, logout } from "./features/userSlice";
@@ -8,10 +8,12 @@ import { selectCryptoData } from "./features/cryptoSlice";
 import "./Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "./firebase";
+import { Tooltip } from "@mui/material";
 
 export default function Header() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+ 
 
   const cryptoData = useSelector(selectCryptoData);
   const topCrypto = cryptoData.slice(0,10);
@@ -37,12 +39,14 @@ export default function Header() {
           })}
         </div>
         {user != null && (
+          <Tooltip title="Logout">
           <img
             onClick={handleLogout}
             className="user-logo"
             src="https://s3.coinmarketcap.com/static/img/portraits/63351ffc9b613d345489037f.png"
             alt="User Logo"
           />
+          </Tooltip>
         )}
       </section>
       <section className="bottom">

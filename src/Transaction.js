@@ -43,7 +43,6 @@ function Transaction(props) {
     setTransactionType(buttonType);
   };
 
-
   const dispatch = useDispatch();
 
   const addTransaction = async (e) => {
@@ -57,10 +56,8 @@ function Transaction(props) {
 
     let newPortfolios = [];
 
-
     oldPortfolios.forEach((portfolio) => {
       if (user.viewingPortfolio.portfolioName === portfolio.portfolioName) {
-
         let oldTransactions = [...portfolio.transactions];
         let newTransactions = [];
         let flag = 0;
@@ -68,32 +65,34 @@ function Transaction(props) {
           if (transaction.name === props.selectedCrypto.name) {
             console.log("Same");
             flag = 1;
-            if (transactionType === 'buy') {
+            if (transactionType === "buy") {
               newTransactions.push({
                 ...transaction,
-                buyPrice: (Number(transaction.buyPrice) * Number(transaction.quantity) + Number(formState.pricePerCoin) * Number(formState.quantity)) / (Number(transaction.quantity) + Number(formState.quantity)),
-                quantity: Number(formState.quantity) + Number(transaction.quantity)
-              })
-
+                buyPrice:
+                  (Number(transaction.buyPrice) * Number(transaction.quantity) +
+                    Number(formState.pricePerCoin) *
+                      Number(formState.quantity)) /
+                  (Number(transaction.quantity) + Number(formState.quantity)),
+                quantity:
+                  Number(formState.quantity) + Number(transaction.quantity),
+              });
             }
             if (transactionType === "sell") {
-
               if (Number(transaction.quantity) > Number(formState.quantity)) {
                 newTransactions.push({
                   ...transaction,
-                  quantity: Number(transaction.quantity) - Number(formState.quantity)
-                })
+                  quantity:
+                    Number(transaction.quantity) - Number(formState.quantity),
+                });
               }
-
             }
+          } else {
+            newTransactions.push(transaction);
           }
-          else {
-            newTransactions.push(transaction)
-          }
-        })
+        });
 
         if (flag === 0) {
-          if (transactionType === 'buy') {
+          if (transactionType === "buy") {
             console.log("Different");
             newTransactions.push({
               name: props.selectedCrypto.name,
@@ -104,20 +103,20 @@ function Transaction(props) {
               buyPrice: formState.pricePerCoin,
               date: formState.date,
               price_change_24h: props.selectedCrypto.price_change_24h,
-              price_change_percentage_24h: props.selectedCrypto.price_change_percentage_24h
-            })
+              price_change_percentage_24h:
+                props.selectedCrypto.price_change_percentage_24h,
+            });
           }
         }
 
         newPortfolios.push({
           ...portfolio,
-          transactions: newTransactions
+          transactions: newTransactions,
         });
       } else {
         newPortfolios.push(portfolio);
       }
     });
-
 
     // oldPortfolios.forEach((portfolio) => {
     //   if (props.selectedPortfolio === portfolio.portfolioName) {
@@ -143,13 +142,11 @@ function Transaction(props) {
     //   }
     // });
 
-    
-
     let newViewingPortfolio;
     newPortfolios.forEach((portfolio) => {
       if (portfolio.portfolioName === user.viewingPortfolio.portfolioName)
         newViewingPortfolio = portfolio;
-    })
+    });
 
     console.log(newViewingPortfolio);
 
@@ -157,7 +154,7 @@ function Transaction(props) {
       login({
         ...user,
         portfolios: newPortfolios,
-        viewingPortfolio: newViewingPortfolio
+        viewingPortfolio: newViewingPortfolio,
       })
     );
 
@@ -168,12 +165,12 @@ function Transaction(props) {
     close();
   };
 
-  const [createTransactionPopUp, setCreateTransactionPopUp] = useState(false);
+  // const [createTransactionPopUp, setCreateTransactionPopUp] = useState(false);
 
-  const handleClick = (e) => {
-    setCreateTransactionPopUp(true);
-    close();
-  };
+  // const handleClick = (e) => {
+  //   setCreateTransactionPopUp(true);
+  //   close();
+  // };
 
   return (
     props.visible && (
@@ -230,7 +227,7 @@ function Transaction(props) {
               Sell
             </button>
           </div>
-          <div onClick={handleClick} className="selected-crypto">
+          <div className="selected-crypto">
             <div className="name">
               <img
                 className="top-crypto-image"
@@ -260,12 +257,12 @@ function Transaction(props) {
               ></path>
             </svg>
           </div>
-          <div className="create-transaction-model">
-          <CreateTransactionModel
-            visible={createTransactionPopUp}
-            closeModel={setCreateTransactionPopUp}
-          />
-        </div>
+          {/* <div className="create-transaction-model">
+            <CreateTransactionModel
+              visible={createTransactionPopUp}
+              closeModel={setCreateTransactionPopUp}
+            />
+          </div> */}
           <div className="transaction-details">
             <div>
               <p>Quantity</p>

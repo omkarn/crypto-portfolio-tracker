@@ -10,6 +10,7 @@ import { selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
 
 import CreateTransactionModel from "./CreateTransactionModel";
+import { Switch, Tooltip } from "@mui/material";
 
 function DetailsTop(props) {
   const [createTransactionPopUp, setCreateTransactionPopUp] = useState(false);
@@ -76,6 +77,10 @@ function DetailsTop(props) {
         </p>
       </div>
       <div className="details-top-right">
+        <div className="switch">
+          <p>Show chart</p>
+          <Switch onClick={()=>{props.setPieChartToggle(!props.pieChartToggle)}} />
+        </div>
         <div className="button-div">
           <button onClick={handleClick}>+ Add Transaction</button>
         </div>
