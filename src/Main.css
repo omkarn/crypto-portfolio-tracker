@@ -44,6 +44,13 @@
     color:rgb(88, 102, 126)
 }
 
+.loader{
+    width: 100vh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 

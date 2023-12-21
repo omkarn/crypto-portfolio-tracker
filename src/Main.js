@@ -43,7 +43,9 @@ function Main() {
   return (
     <>
       {loading === true ? (
+        <div className="loader">
         <CircularProgress />
+        </div>
       ) : (
         <div className="main" onClick={toggleDelete}>
           {user.portfolios.length === 0 ? (
