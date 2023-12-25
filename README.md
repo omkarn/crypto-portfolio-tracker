@@ -1,4 +1,4 @@
-# Crypto Portfolio Tracker
+# Crypto Portfolio Tracker (CoinMarketCap Clone)
 
 Crypto Portfolio Tracker is a web application built to help you manage and track your cryptocurrency investments. With a user-friendly interface, it leverages React, Redux, Material UI, and Firebase to provide a seamless experience for tracking your crypto holdings.
 
@@ -21,7 +21,7 @@ Crypto Portfolio Tracker is a web application built to help you manage and track
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/crypto-portfolio-tracker.git
+git clone https://github.com/omkarn/crypto-portfolio-tracker.git
 cd crypto-portfolio-tracker
 ```
 
@@ -35,7 +35,7 @@ npm install
 
    - Create a Firebase project on the [Firebase Console](https://console.firebase.google.com/).
    - Obtain your Firebase configuration.
-   - Replace the placeholder configuration in `src/firebase/firebaseConfig.js` with your Firebase configuration.
+   - Replace the placeholder configuration in `src/firebase.js` with your Firebase configuration.
 
 4. Run the application:
 
@@ -49,12 +49,9 @@ npm start
 
 Contributions are welcome! If you find any issues or have ideas for improvements, please open an issue or submit a pull request.
 
-## License
+## Live Website
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Hat tip to the open-source community for inspiring and contributing to this project.
+- Please visit below netlify link to view live website :
+  https://crypto-portfolio-tracker-omkarnirmal.netlify.app/
 
 Happy tracking your crypto investments with Crypto Portfolio Tracker! 🚀
