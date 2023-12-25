@@ -4,7 +4,7 @@ Crypto Portfolio Tracker is a web application built to help you manage and track
 
 ## Live Demo
 
-Check out the live version of Crypto Portfolio Tracker [here]([https://your-live-website-link.com](https://crypto-portfolio-tracker-omkarnirmal.netlify.app/)).
+Check out the live version of Crypto Portfolio Tracker [here](https://crypto-portfolio-tracker-omkarnirmal.netlify.app/).
 
 ## Features
 
