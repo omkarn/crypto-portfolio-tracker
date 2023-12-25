@@ -4,7 +4,7 @@ Crypto Portfolio Tracker is a web application built to help you manage and track
 
 ## Live Demo
 
-Check out the live version of Crypto Portfolio Tracker [here](https://your-live-website-link.com).
+Check out the live version of Crypto Portfolio Tracker [here]([https://your-live-website-link.com](https://crypto-portfolio-tracker-omkarnirmal.netlify.app/)).
 
 ## Features
 
@@ -25,7 +25,7 @@ Check out the live version of Crypto Portfolio Tracker [here](https://your-live-
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/crypto-portfolio-tracker.git
+git clone https://github.com/omkarn/crypto-portfolio-tracker.git
 cd crypto-portfolio-tracker
 ```
 
@@ -39,7 +39,7 @@ npm install
 
    - Create a Firebase project on the [Firebase Console](https://console.firebase.google.com/).
    - Obtain your Firebase configuration.
-   - Replace the placeholder configuration in `src/firebase/firebaseConfig.js` with your Firebase configuration.
+   - Replace the placeholder configuration in `src/firebase.js` with your Firebase configuration.
 
 4. Run the application:
 
@@ -52,13 +52,5 @@ npm start
 ## Contributing
 
 Contributions are welcome! If you find any issues or have ideas for improvements, please open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Hat tip to the open-source community for inspiring and contributing to this project.
 
 Happy tracking your crypto investments with Crypto Portfolio Tracker! 🚀
