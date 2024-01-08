@@ -1,14 +1,14 @@
 import React from "react";
 
-import "./AddTransactionModel.css";
+import "../styles/AddTransactionModel.css";
 
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { login, selectUser } from "./features/userSlice";
+import { login, selectUser } from "../features/userSlice";
 import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
-import { db } from "./firebase";
+import { db } from "../firebase/firebase";
 
 import AddTransactionModel from "./AddTransactionModel";
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./Assets.css";
+import "../styles/Assets.css";
 
 import Transaction from "./Transaction";
 
@@ -8,10 +8,10 @@ import AddIcon from "@mui/icons-material/Add";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 
-import { login, selectUser } from "./features/userSlice";
+import { login, selectUser } from "../features/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-import { db } from "./firebase";
+import { db } from "../firebase/firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { Tooltip } from "@mui/material";
 

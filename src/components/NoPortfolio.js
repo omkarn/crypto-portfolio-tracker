@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./NoPortfolio.css";
+import "../styles/NoPortfolio.css";
 import AddTransactionModel from "./AddTransactionModel";
 
 function NoPortfolio(props) {

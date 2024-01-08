@@ -1,9 +1,9 @@
 import React from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
 
-import "./PieChartDiv.css";
+import "../styles/PieChartDiv.css";
 
-import { selectUser } from "./features/userSlice";
+import { selectUser } from "../features/userSlice";
 import { useSelector } from "react-redux";
 
 function PieChartDiv(props) {

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-import "./Sidebar.css";
+import "../styles/Sidebar.css";
 
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 
 import { useDispatch, useSelector } from "react-redux";
-import { login, selectUser } from "./features/userSlice";
-import { selectCryptoData } from "./features/cryptoSlice";
+import { login, selectUser } from "../features/userSlice";
+import { selectCryptoData } from "../features/cryptoSlice";
 
-import { db } from "./firebase";
+import { db } from "../firebase/firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import AddTransactionModel from "./AddTransactionModel";
 import Tooltip from '@mui/material/Tooltip';

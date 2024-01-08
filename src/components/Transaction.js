@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import "./Transaction.css";
+import "../styles/Transaction.css";
 import { FormGroup } from "@mui/material";
 
 import { useDispatch, useSelector } from "react-redux";
-import { login, selectUser } from "./features/userSlice";
+import { login, selectUser } from "../features/userSlice";
 import {
   Firestore,
   arrayUnion,
@@ -14,7 +14,7 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
-import { db } from "./firebase";
+import { db } from "../firebase/firebase";
 
 import CreateTransactionModel from "./CreateTransactionModel";
 

@@ -2,13 +2,13 @@ import React, { useState } from "react";
 
 import CloseIcon from "@mui/icons-material/Close";
 
-import "./LoginModel.css";
-import { auth } from "./firebase";
+import "../styles/LoginModel.css";
+import { auth } from "../firebase/firebase";
 import { useDispatch } from "react-redux";
-import { login } from "./features/userSlice";
+import { login } from "../features/userSlice";
 
 import { collection, setDoc, doc, getDoc } from "firebase/firestore";
-import { db } from "./firebase";
+import { db } from "../firebase/firebase";
 
 function LoginModel(props) {
   const [formState, setFormState] = useState({

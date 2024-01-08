@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 
-import { selectUser, logout } from "./features/userSlice";
+import { selectUser, logout } from "../features/userSlice";
 
-import { selectCryptoData } from "./features/cryptoSlice";
+import { selectCryptoData } from "../features/cryptoSlice";
 
-import "./Header.css";
+import "../styles/Header.css";
 import { useDispatch, useSelector } from "react-redux";
-import { auth } from "./firebase";
+import { auth } from "../firebase/firebase";
 import { Tooltip } from "@mui/material";
 
 export default function Header() {

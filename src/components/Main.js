@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-import "./Main.css";
+import "../styles/Main.css";
 
 import Sidebar from "./Sidebar";
 import DetailsTop from "./DetailsTop";
 import Stats from "./Stats";
 import Assets from "./Assets";
 
-import { selectUser } from "./features/userSlice";
+import { selectUser } from "../features/userSlice";
 import { useSelector } from "react-redux";
 import NoPortfolio from "./NoPortfolio";
 

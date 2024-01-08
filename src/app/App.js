@@ -1,16 +1,16 @@
 import "./App.css";
-import Header from "./Header";
-import Main from "./Main";
-import Home from "./Home";
-import Footer from "./Footer";
+import Header from "../components/Header";
+import Main from "../components/Main";
+import Home from "../components/Home";
+import Footer from "../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout, selectUser } from "./features/userSlice";
+import { login, logout, selectUser } from "../features/userSlice";
 import { useEffect } from "react";
-import { auth } from "./firebase";
-import { fetchCryptoData, selectCryptoData } from "./features/cryptoSlice";
+import { auth } from "../firebase/firebase";
+import { fetchCryptoData, selectCryptoData } from "../features/cryptoSlice";
 
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "./firebase";
+import { db } from "../firebase/firebase";
 
 function App() {
   const user = useSelector(selectUser);

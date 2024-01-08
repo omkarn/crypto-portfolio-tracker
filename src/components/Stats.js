@@ -1,9 +1,9 @@
 import React from "react";
 
-import { selectUser } from "./features/userSlice";
+import { selectUser } from "../features/userSlice";
 import { useSelector } from "react-redux";
 
-import "./Stats.css";
+import "../styles/Stats.css";
 
 function Stats(props) {
 

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import "./CreateTransactionModel.css";
+import "../styles/CreateTransactionModel.css";
 
 import { useSelector } from "react-redux";
-import { selectCryptoData } from "./features/cryptoSlice";
+import { selectCryptoData } from "../features/cryptoSlice";
 import Transaction from "./Transaction";
 
 function CreateTransactionModel(props) {

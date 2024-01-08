@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Cryptocurrencies.js'
+import '../styles/Cryptocurrencies.js'
 
 function Cryptocurrencies() {
   return (

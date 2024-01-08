@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import "./DetailsTop.css";
+import "../styles/DetailsTop.css";
 
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 
-import { selectUser } from "./features/userSlice";
+import { selectUser } from "../features/userSlice";
 
 import { useSelector } from "react-redux";
 
