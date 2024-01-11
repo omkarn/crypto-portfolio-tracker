@@ -80,6 +80,10 @@
   border: none;
 }
 
+.header-img{
+  cursor: pointer;
+}
+
 .header-p{
   cursor: pointer;
 }

@@ -1,0 +1,50 @@
+table {
+  width: 100%;
+}
+
+td,
+th {
+    text-align: left;
+}
+
+.crytocurrencies {
+  margin: 20px;
+  margin-top: 30px;
+}
+
+.crytocurrencies h1 {
+  font-size: 24px;
+  line-height: 34px;
+  margin-bottom: 30px;
+}
+
+.crytocurrencies img {
+    width: 25px;
+}
+
+
+.crytocurrencies th {
+  padding: 12px 0;
+  border-top: 1px solid #eff2f5;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.crytocurrencies .tr .name {
+    display: flex;
+    align-items: center;
+}
+
+.crytocurrencies tr {
+  border-bottom: 1px solid #eff2f5;
+}
+
+.crytocurrencies td {
+  padding: 17px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.crytocurrencies table {
+  border-collapse: collapse;
+}

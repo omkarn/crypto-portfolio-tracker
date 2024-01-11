@@ -53,7 +53,8 @@ function LoginModel(props) {
                   displayName: formState.name,
                   uid: userAuth.user.uid,
                   portfolios: [],
-                  viewingPortfolio: ""
+                  viewingPortfolio: "",
+                  watchlist:[]
                 })
               );
             })
@@ -63,6 +64,7 @@ function LoginModel(props) {
                 email: userAuth.user.email,
                 displayName: formState.name,
                 portfolios: [],
+                watchlist:[]
               };
               db.collection("users").doc(userAuth.user.uid).set(docData);
             });
@@ -89,7 +91,8 @@ function LoginModel(props) {
             displayName: userData.name,
             uid: userData.uid,
             portfolios: userData.portfolios,
-            viewingPortfolio:userData.portfolios[0]
+            viewingPortfolio:userData.portfolios[0],
+            watchlist:userData.watchlist
           })
         );
       })

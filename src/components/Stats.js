@@ -85,7 +85,7 @@ function Stats(props) {
         <div>
           <p className="change" style={{ marginTop: "8px", marginBottom: "8px", fontWeight: 600, fontSize: "20px" }}>
             {allTimeProfit > 0 ? `+` : ``} $
-            {allTimeProfit}
+            {Intl.NumberFormat().format(allTimeProfit)}
           </p>
 
           <p className="change" style={{ paddingLeft: "5px" }}>
@@ -102,7 +102,7 @@ function Stats(props) {
             <img src={getPerformers().bestPerformer.image} style={{ width: "25px" }} />
             <p style={{ paddingLeft: "8px", fontWeight: 700, fontSize: "20px" }}>{(getPerformers().bestPerformer.symbol).toUpperCase()}</p>
           </div>
-          <p className="change">{getPerformers().bestPerformer.change > 0 ? `+` : ``} ${getPerformers().bestPerformer.change}{"   "}({getPerformers().bestPerformer.changePercentage}%)</p>
+          <p className="change">{getPerformers().bestPerformer.change > 0 ? `+` : ``} ${Intl.NumberFormat().format(getPerformers().bestPerformer.change)}{"   "}({getPerformers().bestPerformer.changePercentage}%)</p>
         </div>  </div>
       <div style={getPerformers().worstPerformer.change < 0 ? { color: "#EA3943" } : { color: "#16C784" }}>
         <p className="title" style={{ fontSize: "14px", fontWeight: "600" }}>
@@ -113,7 +113,7 @@ function Stats(props) {
             <img src={getPerformers().worstPerformer.image} style={{ width: "25px" }} />
             <p style={{ paddingLeft: "8px", fontWeight: 700, fontSize: "20px" }}>{(getPerformers().worstPerformer.symbol).toUpperCase()}</p>
           </div>
-          <p className="change">{getPerformers().worstPerformer.change > 0 ? `+` : ``} ${getPerformers().worstPerformer.change}{"   "}({getPerformers().worstPerformer.changePercentage}%)</p>
+          <p className="change">{getPerformers().worstPerformer.change > 0 ? `+` : ``} ${Intl.NumberFormat().format(getPerformers().worstPerformer.change)}{"   "}({getPerformers().worstPerformer.changePercentage}%)</p>
         </div> </div>
     </div>
   );

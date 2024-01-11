@@ -101,11 +101,11 @@ function Sidebar(props) {
                   <p className="portfolio-name">{portfolio.portfolioName}</p>
                   <p className="portfolio-value">
                     $
-                    {portfolio.transactions.length === 0
+                    {Intl.NumberFormat().format(portfolio.transactions.length === 0
                       ? 0
                       : (portfolio.transactions.reduce((a, b) => {
                         return a + b.current_price * b.quantity;
-                      }, 0)).toFixed(2)}
+                      }, 0)).toFixed(2))}
                   </p>
                 </div>
                 {edit && (

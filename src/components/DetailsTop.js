@@ -35,11 +35,11 @@ function DetailsTop(props) {
         </p>
         <h1 className="details-top-h1">
           $
-          {user.viewingPortfolio.transactions
+          {Intl.NumberFormat().format(user.viewingPortfolio.transactions
             .reduce((a, b) => {
               return a + b.current_price * b.quantity;
             }, 0)
-            .toFixed(2)}
+            .toFixed(2))}
         </h1>
         <p>
           <span
@@ -54,12 +54,12 @@ function DetailsTop(props) {
                 : { color: "#EA3943", fontWeight: "700" }
             }
           >
-            +{" "}
-            {user.viewingPortfolio.transactions
+            +{" $"}
+            {Intl.NumberFormat().format(user.viewingPortfolio.transactions
               .reduce((a, b) => {
                 return a + b.price_change_24h * b.quantity;
               }, 0)
-              .toFixed(2)}
+              .toFixed(2))}
           </span>{" "}
           <span
             className="span-two"

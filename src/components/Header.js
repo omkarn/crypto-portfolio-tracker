@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../firebase/firebase";
 import { Tooltip } from "@mui/material";
 
-export default function Header() {
+export default function Header(props) {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
  
@@ -51,11 +51,11 @@ export default function Header() {
       </section>
       <section className="bottom">
         <div className="header-left">
-          <img alt="logo" src="./assets/header-logo.svg" />
-          <p className="header-p">Cryptocurrencies</p>
+          <img onClick={()=>{props.setShow('Main')}} className="header-img" alt="logo" src="./assets/header-logo.svg" />
+          <p onClick={()=>{props.setShow('Cryptocurrencies')}} className="header-p">Cryptocurrencies</p>
         </div>
         <div className="header-right">
-          <p className="header-p">Watchlist</p>
+          <p onClick={()=>{props.setShow('Watchlist')}} className="header-p">Watchlist</p>
           <div className="header-search">
             <SearchIcon />
             <input type="text" placeholder="Search"></input>

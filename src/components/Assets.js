@@ -109,7 +109,7 @@ function Assets(props) {
                     {transcation.symbol.toUpperCase()}
                   </p>
                 </td>
-                <td>${transcation.current_price}</td>
+                <td>${Intl.NumberFormat().format(transcation.current_price)}</td>
                 <td
                   className="skipped"
                   style={
@@ -143,24 +143,24 @@ function Assets(props) {
                 <td className="skipped">
                   <p>
                     $
-                    {(transcation.quantity * transcation.current_price).toFixed(
+                    {Intl.NumberFormat().format((transcation.quantity * transcation.current_price).toFixed(
                       2
-                    )}
+                    ))}
                   </p>
                   <p className="small">
-                    {transcation.quantity} {transcation.symbol.toUpperCase()}
+                    {Intl.NumberFormat().format(transcation.quantity)} {transcation.symbol.toUpperCase()}
                   </p>
                 </td>
-                <td className="skipped">${parseFloat(transcation.buyPrice).toFixed(2)}</td>
+                <td className="skipped">${Intl.NumberFormat().format(parseFloat(transcation.buyPrice).toFixed(2))}</td>
                 <td>
                   <p>
                     {transcation.current_price - transcation.buyPrice > 0
                       ? `+`
                       : ``}
-                    {(
+                    {Intl.NumberFormat().format((
                       (transcation.current_price - transcation.buyPrice) *
                       transcation.quantity
-                    ).toFixed(2)}
+                    ).toFixed(2))}
                   </p>
                   <p
                     className="small"
